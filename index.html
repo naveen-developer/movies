@@ -401,7 +401,17 @@
             background: #b8c8e0;
             border-radius: 12px;
         }
+
+        .old-site{
+    text-align: center;
+    margin-block: 3rem 1rem;
+    
+}
+.old-site a{
+    color: #000;
+}
     </style>
+
 </head>
 <body>
 
@@ -433,13 +443,14 @@
     </div>
 
     <div class="card-grid" id="cardGrid"></div>
+    <div class="old-site"><a href="index-old.html">Old Site</a></div>
 </div>
 
 <script>
     (function(){
         // ---------- ALL 12 SITES (your list) ----------
         const DEFAULT_BOOKMARKS = [
-            { id: 1, title: 'HDHub4u', url: 'https://new1.hdhub4u.cl/?utm=gs', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 1, title: 'MoviezWap', url: 'https://www.moviezwap.onl/', adLevel: 'free', rating: 5, description: 'Telugu · best one, downloadable easily' },
             { id: 2, title: 'JalshaMoviez', url: 'https://www.jalshamoviez24.com/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
             { id: 3, title: 'DownloadHub', url: 'https://downloadhub1.com/', adLevel: 'free', rating: 5, description: 'English, Hindi' },
             { id: 4, title: 'MoviesBazar', url: 'https://www.moviesbazar.co/', adLevel: 'minimal', rating: 4, description: 'English, Hindi' },
@@ -450,7 +461,8 @@
             { id: 9, title: 'MultiMovies', url: 'https://multimovies.makeup/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
             { id: 10, title: 'HindiLinks4u', url: 'https://hindilinks4u.party/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
             { id: 11, title: 'Movies4u', url: 'https://movies4u.as/', adLevel: 'minimal', rating: 4, description: 'English, Hindi, Telugu' },
-            { id: 12, title: 'MoviezWap', url: 'https://www.moviezwap.onl/', adLevel: 'free', rating: 5, description: 'Telugu · best one, downloadable easily' }
+            { id: 1, title: 'HDHub4u', url: 'https://new1.hdhub4u.cl/?utm=gs', adLevel: 'minimal', rating: 3, description: 'English, Hindi' }
+
         ];
 
         // ---------- state ----------
