@@ -1,665 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Streaming Websites</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Streaming Sites</title>
+    <!-- Google Fonts: Poppins & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --primary: #273a66;
-            --primary-light: #a29bfe;
-            --dark: #2d3436;
-            --light: #f5f6fa;
-            --success: #00b894;
-            --danger: #d63031;
-            --warning: #fdcb6e;
-            --info: #0984e3;
-            --card-bg: #ffffff;
-            --body-bg: #f1f2f6;
-            --text-color: #2d3436;
-            --text-light: #636e72;
-        }
-
-        .dark-mode {
-            --card-bg: #2d3436;
-            --body-bg: #1e272e;
-            --text-color: #f5f6fa;
-            --text-light: #b2bec3;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: all 0.3s ease;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--body-bg);
-            color: var(--text-color);
-            padding: 2rem;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            background: linear-gradient(145deg, #f5f0ff 0%, #e8f0fe 100%);
             min-height: 100vh;
+            padding: 1rem 0.9rem 2rem;
+            color: #1a1a2e;
         }
 
-        .container {
-            max-width: 1200px;
+        .app {
+            max-width: 480px;
             margin: 0 auto;
         }
 
-        header {
+        /* ----- header with gradient ----- */
+        .header-wrap {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 28px;
+            padding: 1.2rem 1.2rem 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.30);
+            border: 1px solid rgba(255,255,255,0.20);
+            backdrop-filter: blur(2px);
+        }
+
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            margin-bottom: 0.9rem;
         }
 
         h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .sort-btn i {
-            margin-right: 5px;
-            ;
-        }
-
-        .theme-toggle,
-        .sort-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 0 1rem;
-            font-weight: 500;
-        }
-
-        .theme-toggle {
-            width: 40px;
-            padding: 0;
-        }
-
-        .sort-btn.active {
-            background: #1f2a45;
-        }
-
-        .websites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .website-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .website-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-thumbnail {
-            height: 180px;
-            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            padding: 1rem;
-            color: white;
-        }
-
-        .card-thumbnail::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        }
-
-        .card-title {
-            position: relative;
-            z-index: 2;
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+            font-weight: 700;
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            letter-spacing: -0.3px;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .card-rating {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
+        h1 i {
+            font-size: 1.6rem;
+            color: #fddb6d;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.10));
+        }
+
+        .btn-reset {
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-reset i {
+            font-size: 0.7rem;
+        }
+
+        .btn-reset:hover {
+            background: rgba(255,255,255,0.30);
+            transform: scale(0.97);
+        }
+
+        /* filter pills - gradient style */
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.10);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            padding: 0.3rem 0.4rem;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .filter-group label {
             display: flex;
             align-items: center;
             gap: 0.25rem;
-            z-index: 2;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: rgba(255,255,255,0.80);
+            background: transparent;
+            border: 1px solid transparent;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.2px;
+            flex: 1 1 auto;
+            justify-content: center;
+            white-space: nowrap;
         }
 
-        .card-rating i {
-            color: #fdcb6e;
+        .filter-group label i {
+            font-size: 0.7rem;
         }
 
-        .card-content {
-            padding: 1.5rem;
+        .filter-group label:hover {
+            background: rgba(255,255,255,0.12);
         }
 
-        .features-list {
+        .filter-group input[type="radio"] {
+            display: none;
+        }
+
+        .filter-group label.active-filter {
+            background: #ffffff;
+            color: #4a3f7a;
+            font-weight: 600;
+            border-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .rating-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.20);
+            padding: 0.05rem 0.4rem;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #fddb6d;
+            margin-left: 2px;
+        }
+
+        .filter-group label.active-filter .rating-badge {
+            background: #f0ecff;
+            color: #5a4a8a;
+        }
+
+        /* ----- card grid ----- */
+        .card-grid {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            gap: 1rem;
         }
 
-        .feature {
+        .movie-card {
+            background: rgba(255,255,255,0.80);
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
+            padding: 1rem 1rem 0.9rem;
+            border: 1px solid rgba(255,255,255,0.60);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .movie-card:active {
+            transform: scale(0.99);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .movie-title {
+            font-family: 'Montserrat', 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: -0.2px;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+
+        .movie-title a {
+            color: #1f1f3a;
+            text-decoration: none;
+            transition: color 0.15s;
+            border-bottom: 1.5px dotted transparent;
+        }
+
+        .movie-title a:hover {
+            color: #5a4a8a;
+            border-bottom-color: #764ba2;
+        }
+
+        .ad-tag {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            white-space: nowrap;
+            border: 1px solid rgba(0,0,0,0.04);
+            background: #f0f4ff;
+            color: #3f3f6a;
+            flex-shrink: 0;
+        }
+
+        .ad-tag.free {
+            background: linear-gradient(135deg, #d4edda, #b7e4c7);
+            color: #1a6d3a;
+            border-color: #8cc9a0;
+        }
+
+        .ad-tag.minimal {
+            background: linear-gradient(135deg, #d4e4ff, #b8cef5);
+            color: #1d4a7a;
+            border-color: #8ab0e0;
+        }
+
+        .ad-tag.ads {
+            background: linear-gradient(135deg, #fdd9d9, #f5c2c2);
+            color: #8f3f3f;
+            border-color: #d99c9c;
+        }
+
+        .stars-container {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.05rem;
+            margin: 0.5rem 0 0.15rem;
+        }
+
+        .stars-container i {
+            color: #f5b342;
             font-size: 0.85rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 20px;
-            background: rgba(108, 92, 231, 0.1);
-            color: var(--primary);
+            letter-spacing: 0.5px;
         }
 
-        .feature i {
-            font-size: 0.9rem;
+        .stars-container .empty-star {
+            color: #d4dce8;
         }
 
-        .feature.ad-free {
-            background: rgba(0, 184, 148, 0.1);
-            color: var(--success);
+        .rating-label {
+            font-size: 0.65rem;
+            background: #f0f4fc;
+            padding: 0.05rem 0.6rem;
+            border-radius: 30px;
+            color: #4a5a7a;
+            font-weight: 500;
+            margin-left: 0.3rem;
         }
 
-        .feature.not-ad-free {
-            background: rgba(214, 48, 49, 0.1);
-            color: var(--danger);
+        .desc {
+            font-size: 0.75rem;
+            color: #4a5a72;
+            margin: 0.1rem 0 0.6rem;
+            line-height: 1.4;
+            font-weight: 400;
+            letter-spacing: 0.1px;
         }
 
-        .feature.downloadable {
-            background: rgba(9, 132, 227, 0.1);
-            color: var(--info);
-        }
-
-        .feature.not-downloadable {
-            background: rgba(214, 48, 49, 0.1);
-            color: var(--danger);
-        }
-
-        .feature.hd {
-            background: rgba(253, 203, 110, 0.1);
-            color: #e17055;
-        }
-
-        .languages {
-            margin-top: 1rem;
-        }
-
-        .languages-title {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .language-tags {
+        .card-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
+            margin-top: auto;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            padding-top: 0.7rem;
         }
 
-        .language-tag {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            background: rgba(108, 92, 231, 0.1);
-            color: var(--primary);
-        }
-
-        .visit-btn {
-            display: block;
-            text-align: center;
-            padding: 0.75rem;
-            border-radius: 8px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
+        .action-btn {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
             font-weight: 500;
-            margin-top: 1.5rem;
-            transition: all 0.3s;
+            padding: 0.25rem 0.8rem;
+            border-radius: 30px;
+            background: #f5f8ff;
+            border: 1px solid #e2e8f2;
+            color: #1f2f4a;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+            transition: 0.15s;
+            text-decoration: none;
+            flex: 1 1 auto;
+            justify-content: center;
         }
 
-        .visit-btn:hover {
-            background: #4d5d83;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        .action-btn i {
+            font-size: 0.7rem;
+            color: #5a7a9a;
         }
 
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: var(--text-light);
+        .action-btn:hover {
+            background: #edf2fa;
+            border-color: #c8d4e8;
+        }
+
+        .action-btn.google-btn {
+            background: #f2f6fc;
+            border-color: #ccd8ec;
+        }
+
+        .action-btn.google-btn i {
+            color: #4285f4;
+        }
+
+        .action-btn.not-working-btn {
+            background: #fef4f2;
+            border-color: #f5d5cc;
+        }
+
+        .action-btn.not-working-btn i {
+            color: #c55a4a;
+        }
+
+        .action-btn.not-working-btn:hover {
+            background: #fce8e4;
+            border-color: #e8b8ae;
         }
 
         .no-results {
             text-align: center;
-            padding: 2rem;
-            font-size: 1.2rem;
-            color: var(--text-light);
-            grid-column: 1 / -1;
+            padding: 3rem 1rem;
+            background: rgba(255,255,255,0.60);
+            backdrop-filter: blur(8px);
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.70);
+            color: #5a6f89;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        @media (max-width: 768px) {
+        /* ----- tiny adjustments for very small screens ----- */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+            .filter-group label {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+            .movie-title {
+                font-size: 0.9rem;
+            }
+            .card-actions {
+                gap: 0.3rem;
+            }
+            .action-btn {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+
+        @media (min-width: 600px) {
             body {
-                padding: 1rem;
+                padding: 2rem 1.5rem;
             }
-
-            .websites-grid {
-                grid-template-columns: 1fr;
+            .app {
+                max-width: 560px;
+            }
+            .card-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.2rem;
+            }
+            .movie-card {
+                padding: 1.2rem;
             }
         }
 
-        .dark-mode .language-tag,
-        .dark-mode .feature {
-            color: #ffffff;
+        /* smooth scroll */
+        ::-webkit-scrollbar {
+            width: 4px;
+            background: #eef3f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b8c8e0;
+            border-radius: 12px;
         }
     </style>
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>Streaming Websites</h1>
-            <div class="controls">
-                <button class="sort-btn" id="sortRating">
-                    <i class="fas fa-star"></i> Sort by Rating
-                </button>
-                <button class="sort-btn" id="sortAdFree">
-                    <i class="fas fa-ad"></i> Ad-Free First
-                </button>
-                <button class="sort-btn" id="sortDownloadable">
-                    <i class="fas fa-download"></i> Downloadable
-                </button>
-                <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </header>
 
-        <div class="websites-grid" id="websitesContainer">
-            <div class="loading">
-                <i class="fas fa-spinner fa-spin"></i> Loading websites...
-            </div>
+<div class="app">
+    <!-- header with gradient -->
+    <div class="header-wrap">
+        <div class="header-top">
+            <h1><i class="fas fa-play-circle"></i> Streaming Sites</h1>
+            <button class="btn-reset" id="resetBookmarksBtn"><i class="fas fa-undo-alt"></i> Reset</button>
+        </div>
+
+        <div class="filter-group" id="filterGroup">
+            <label class="active-filter" data-filter="all">
+                <input type="radio" name="adFilter" value="all" checked> <i class="fas fa-th-list"></i> All
+            </label>
+            <label data-filter="free">
+                <input type="radio" name="adFilter" value="free"> <i class="fas fa-check-circle"></i> Free
+                <span class="rating-badge">⭐5</span>
+            </label>
+            <label data-filter="minimal">
+                <input type="radio" name="adFilter" value="minimal"> <i class="fas fa-ad"></i> Minimal
+                <span class="rating-badge">⭐3-4</span>
+            </label>
+            <label data-filter="ads">
+                <input type="radio" name="adFilter" value="ads"> <i class="fas fa-bullhorn"></i> Ads
+                <span class="rating-badge">⭐1</span>
+            </label>
         </div>
     </div>
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const icon = themeToggle.querySelector('i');
+    <div class="card-grid" id="cardGrid"></div>
+</div>
 
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
+<script>
+    (function(){
+        // ---------- ALL 12 SITES (your list) ----------
+        const DEFAULT_BOOKMARKS = [
+            { id: 1, title: 'HDHub4u', url: 'https://new1.hdhub4u.cl/?utm=gs', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 2, title: 'JalshaMoviez', url: 'https://www.jalshamoviez24.com/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 3, title: 'DownloadHub', url: 'https://downloadhub1.com/', adLevel: 'free', rating: 5, description: 'English, Hindi' },
+            { id: 4, title: 'MoviesBazar', url: 'https://www.moviesbazar.co/', adLevel: 'minimal', rating: 4, description: 'English, Hindi' },
+            { id: 5, title: 'MoviePire', url: 'https://moviepire.sc/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 6, title: 'BollyHub', url: 'https://bollyhub.info/', adLevel: 'minimal', rating: 4, description: 'English, Hindi, Telugu' },
+            { id: 7, title: 'BollyDon', url: 'https://bollydon.com/', adLevel: 'minimal', rating: 4, description: 'English, Hindi, Telugu' },
+            { id: 8, title: 'ExtraMovies', url: 'https://extramovies.miami/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 9, title: 'MultiMovies', url: 'https://multimovies.makeup/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 10, title: 'HindiLinks4u', url: 'https://hindilinks4u.party/', adLevel: 'minimal', rating: 3, description: 'English, Hindi' },
+            { id: 11, title: 'Movies4u', url: 'https://movies4u.as/', adLevel: 'minimal', rating: 4, description: 'English, Hindi, Telugu' },
+            { id: 12, title: 'MoviezWap', url: 'https://www.moviezwap.onl/', adLevel: 'free', rating: 5, description: 'Telugu · best one, downloadable easily' }
+        ];
 
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+        // ---------- state ----------
+        let bookmarks = [];
+        let currentFilter = 'all';
+
+        const grid = document.getElementById('cardGrid');
+        const filterLabels = document.querySelectorAll('#filterGroup label');
+        const radioButtons = document.querySelectorAll('input[name="adFilter"]');
+        const resetBtn = document.getElementById('resetBookmarksBtn');
+
+        // ---------- helpers ----------
+        function getAdTagClass(level) {
+            if (level === 'free') return 'free';
+            if (level === 'minimal') return 'minimal';
+            return 'ads';
+        }
+
+        function getAdLabel(level) {
+            if (level === 'free') return '🟢 Free';
+            if (level === 'minimal') return '🔵 Minimal';
+            return '🔴 Ads';
+        }
+
+        function renderStars(rating) {
+            let s = '';
+            for (let i=0; i<5; i++) {
+                s += (i < rating) ? '<i class="fas fa-star"></i>' : '<i class="fas fa-star empty-star"></i>';
             }
-        });
+            return s;
+        }
 
-        // Mock API data
-        const websitesData = {
-            "websites": [
-                {
-                    "id": 1,
-                    "title": "zinkmovies",
-                    "movie-link": "https://zinkmovies.baby/",
-                    "comments": "Limited online streaming",
-                    "thumbnail": "zinkmovies.png",
-                    "rating": 3.8,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 2,
-                    "title": "hdhub4u",
-                    "movie-link": "https://hdhub4u.frl/",
-                    "comments": "Screenshots available for quality check",
-                    "thumbnail": "hdhub4u.png",
-                    "rating": 3.7,
-                    "adFree": false,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 3,
-                    "title": "jalshamoviez",
-                    "movie-link": "https://www.jalshamoviez.dev/",
-                    "comments": "only download",
-                    "thumbnail": "jalshamoviez.png",
-                    "rating": 3.9,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 4,
-                    "title": "downloadhub",
-                    "movie-link": "https://www.downloadhub.solutions/",
-                    "comments": "adds available",
-                    "thumbnail": "downloadhub.png",
-                    "rating": 3.9,
-                    "adFree": false,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 5,
-                    "title": "moviesbazar",
-                    "movie-link": "https://www.moviesbazar.net/",
-                    "comments": "limited adds available while streaming",
-                    "thumbnail": "moviesbazar.png",
-                    "rating": 4.0,
-                    "adFree": true,
-                    "downloadable": false,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 6,
-                    "title": "moviepire",
-                    "movie-link": "https://moviepire.net/",
-                    "comments": "limited content available",
-                    "thumbnail": "moviepire.png",
-                    "rating": 4.0,
-                    "adFree": true,
-                    "downloadable": false,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 7,
-                    "title": "bolly4u",
-                    "movie-link": "https://bolly4u.boston/",
-                    "comments": "Best site for movies",
-                    "thumbnail": "bolly4u.png",
-                    "rating": 4.1,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 8,
-                    "title": "m4uhd",
-                    "movie-link": "https://m4uhd.com.co/home",
-                    "comments": "Best site for english movies",
-                    "thumbnail": "m4uhd.png",
-                    "rating": 4.1,
-                    "adFree": true,
-                    "downloadable": false,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 9,
-                    "title": "multimovies",
-                    "movie-link": "https://multimovies.media/",
-                    "comments": "Best site for movies",
-                    "thumbnail": "multimovies.png",
-                    "rating": 4.2,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 10,
-                    "title": "hdbolly4u",
-                    "movie-link": "https://hdbolly4u.site/",
-                    "comments": "Best site for hindi movies",
-                    "thumbnail": "hdbolly4u.png",
-                    "rating": 4.2,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 11,
-                    "title": "extramovies",
-                    "movie-link": "https://extramovies.yoga/",
-                    "comments": "Best site for hindi movies",
-                    "thumbnail": "extramovies.png",
-                    "rating": 4.3,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 12,
-                    "title": "7starhd",
-                    "movie-link": "https://7starhd.ltd/",
-                    "comments": "Best site for all movies",
-                    "thumbnail": "7starhd.png",
-                    "rating": 4.4,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 13,
-                    "title": "hindilinks4u",
-                    "movie-link": "https://hindilinks4u.casino/",
-                    "comments": "Best site for all movies",
-                    "thumbnail": "hindilinks4u.png",
-                    "rating": 4.4,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English"]
-                },
-                {
-                    "id": 14,
-                    "title": "movies4u",
-                    "movie-link": "https://movies4u.lv/",
-                    "comments": "Best site for all movies",
-                    "thumbnail": "movies4u.png",
-                    "rating": 4.4,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Hindi", "English", "Telugu"]
-                },
-                {
-                    "id": 15,
-                    "title": "moviezwap",
-                    "movie-link": "https://www.moviezwap.pink/",
-                    "comments": "Best site for telugu movies",
-                    "thumbnail": "moviezwap.png",
-                    "rating": 4.4,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": false,
-                    "languages": ["Telugu"]
-                },
-                {
-                    "id": 16,
-                    "title": "ibomma",
-                    "movie-link": "https://ser.ibomma.re/telugu-movies/",
-                    "comments": "Best site for telugu movie streaming",
-                    "thumbnail": "ibomma.png",
-                    "rating": 4.4,
-                    "adFree": true,
-                    "downloadable": true,
-                    "hdStreaming": true,
-                    "languages": ["Hindi", "Telugu"]
-                }
+        // ---------- render ----------
+        function render() {
+            const filtered = bookmarks.filter(item => {
+                if (currentFilter === 'all') return true;
+                return item.adLevel === currentFilter;
+            });
 
-            ]
-        };
-
-        // Current sort state
-        let currentSort = 'none';
-        let sortDirection = 'desc';
-
-        // Function to render websites
-        function renderWebsites(sortMethod = 'none') {
-            const container = document.getElementById('websitesContainer');
-            container.innerHTML = '';
-
-            // Clone array to avoid mutating original
-            let websites = [...websitesData.websites];
-
-            // Apply sorting
-            switch (sortMethod) {
-                case 'rating':
-                    websites.sort((a, b) => sortDirection === 'desc' ? b.rating - a.rating : a.rating - b.rating);
-                    break;
-                case 'adFree':
-                    websites.sort((a, b) => sortDirection === 'desc' ? b.adFree - a.adFree : a.adFree - b.adFree);
-                    break;
-                case 'downloadable':
-                    websites.sort((a, b) => sortDirection === 'desc' ? b.downloadable - a.downloadable : a.downloadable - b.downloadable);
-                    break;
-                default:
-                    // No sorting
-                    break;
-            }
-
-            if (websites.length === 0) {
-                container.innerHTML = '<div class="no-results">No websites match your criteria</div>';
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="no-results"><i class="fas fa-search" style="margin-right: 8px;"></i>No sites match this filter</div>`;
                 return;
             }
 
-            websites.forEach(website => {
-                const card = document.createElement('div');
-                card.className = 'website-card';
+            let html = '';
+            filtered.forEach(item => {
+                const adClass = getAdTagClass(item.adLevel);
+                const adLabel = getAdLabel(item.adLevel);
+                const stars = renderStars(item.rating);
+                const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(item.title + ' movie streaming')}`;
 
+                html += `
+                    <div class="movie-card" data-id="${item.id}">
+                        <div class="card-top">
+                            <div class="movie-title">
+                                <a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>
+                            </div>
+                            <span class="ad-tag ${adClass}">${adLabel}</span>
+                        </div>
+                        <div class="stars-container">
+                            ${stars}
+                            <span class="rating-label">${item.rating}/5</span>
+                        </div>
+                        <div class="desc">${item.description || ''}</div>
+                        <div class="card-actions">
+                            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="action-btn"><i class="fas fa-external-link-alt"></i> Visit</a>
+                            <a href="${googleSearchUrl}" target="_blank" rel="noopener noreferrer" class="action-btn google-btn"><i class="fab fa-google"></i> Search</a>
+                            <button class="action-btn not-working-btn" data-title="${item.title}"><i class="fas fa-exclamation-triangle"></i> Not working?</button>
+                        </div>
+                    </div>
+                `;
+            });
 
+            grid.innerHTML = html;
 
-                card.innerHTML = `
-          <div class="card-thumbnail" style="background: url('images/${website.thumbnail}') no-repeat center center / cover;">
-            <div class="card-rating">
-              <i class="fas fa-star"></i> ${website.rating}
-            </div>
-            <h2 class="card-title">${website.title}</h2>
-          </div>
-          <div class="card-content">
-            <div class="features-list">
-              <div class="feature ${website.adFree ? 'ad-free' : 'not-ad-free'}">
-                <i class="fas fa-${website.adFree ? 'check-circle' : 'times-circle'}"></i>
-                ${website.adFree ? 'Ad-Free' : 'Contains Ads'}
-              </div>
-              <div class="feature ${website.downloadable ? 'downloadable' : 'not-downloadable'}">
-                <i class="fas fa-${website.downloadable ? 'download' : 'ban'}"></i>
-                ${website.downloadable ? 'Downloadable' : 'No Download'}
-              </div>
-              <div class="feature ${website.hdStreaming ? 'hd' : ''}">
-                <i class="fas fa-${website.hdStreaming ? 'hd' : 'tv'}"></i>
-                ${website.hdStreaming ? 'HD Streaming' : 'Standard Quality'}
-              </div>
-            </div>
-            <div class="languages">
-              <div class="languages-title">Available Languages:</div>
-              <div class="language-tags">
-                ${website.languages.map(lang => `<span class="language-tag">${lang}</span>`).join('')}
-              </div>
-            </div>
-            <a href="${website['movie-link']}" target="_blank" class="visit-btn">Visit Website</a>
-          </div>
-        `;
-
-                container.appendChild(card);
+            // attach "Not working?" => search google for alternatives
+            document.querySelectorAll('.not-working-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const title = this.dataset.title;
+                    const query = `${title} movie streaming alternative site`;
+                    const googleAltUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                    window.open(googleAltUrl, '_blank');
+                });
             });
         }
 
-        // Sort button functionality
-        document.getElementById('sortRating').addEventListener('click', () => {
-            if (currentSort === 'rating') {
-                sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
-            } else {
-                currentSort = 'rating';
-                sortDirection = 'desc';
-            }
-            updateActiveButton('sortRating');
-            renderWebsites(currentSort);
-        });
-
-        document.getElementById('sortAdFree').addEventListener('click', () => {
-            if (currentSort === 'adFree') {
-                sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
-            } else {
-                currentSort = 'adFree';
-                sortDirection = 'desc';
-            }
-            updateActiveButton('sortAdFree');
-            renderWebsites(currentSort);
-        });
-
-        document.getElementById('sortDownloadable').addEventListener('click', () => {
-            if (currentSort === 'downloadable') {
-                sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
-            } else {
-                currentSort = 'downloadable';
-                sortDirection = 'desc';
-            }
-            updateActiveButton('sortDownloadable');
-            renderWebsites(currentSort);
-        });
-
-        function updateActiveButton(activeId) {
-            document.querySelectorAll('.sort-btn').forEach(btn => {
-                btn.classList.remove('active');
+        // ---------- filter ----------
+        function setFilter(filterValue) {
+            currentFilter = filterValue;
+            radioButtons.forEach(r => r.checked = (r.value === filterValue));
+            filterLabels.forEach(label => {
+                const val = label.dataset.filter;
+                label.classList.toggle('active-filter', val === filterValue);
             });
-            document.getElementById(activeId).classList.add('active');
+            render();
         }
 
-        // Simulate API fetch with delay
-        setTimeout(() => {
-            renderWebsites();
-        }, 800);
-    </script>
+        // ---------- reset ----------
+        function resetToDefaults() {
+            bookmarks = DEFAULT_BOOKMARKS.map(item => ({ ...item }));
+            localStorage.setItem('movieBookmarks', JSON.stringify(bookmarks));
+            render();
+        }
+
+        // ---------- init ----------
+        function init() {
+            const stored = localStorage.getItem('movieBookmarks');
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed) && parsed.length === 12) {
+                        bookmarks = parsed;
+                    } else {
+                        bookmarks = DEFAULT_BOOKMARKS.map(item => ({ ...item }));
+                    }
+                } catch(e) {
+                    bookmarks = DEFAULT_BOOKMARKS.map(item => ({ ...item }));
+                }
+            } else {
+                bookmarks = DEFAULT_BOOKMARKS.map(item => ({ ...item }));
+            }
+
+            setFilter('all');
+
+            // radio change
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.checked) {
+                        setFilter(this.value);
+                        localStorage.setItem('movieBookmarks', JSON.stringify(bookmarks));
+                    }
+                });
+            });
+
+            resetBtn.addEventListener('click', function() {
+                resetToDefaults();
+            });
+
+            window.addEventListener('beforeunload', function() {
+                localStorage.setItem('movieBookmarks', JSON.stringify(bookmarks));
+            });
+        }
+
+        init();
+    })();
+</script>
 </body>
-
 </html>
